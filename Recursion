@@ -1,1 +1,1019 @@
+1. Calculate Power:
+Write a program to find x to the power n (i.e. x^n). Take x and n from the user. You need to return the answer.
+Do this recursively.
+Input format :
+Two integers x and n (separated by space)
+Output Format :
+x^n (i.e. x raise to the power n)
+Constraints :
+0 <= x <= 30
+0 <= n <= 30
+Sample Input 1 :
+ 3 4
+Sample Output 1 :
+81
+Sample Input 2 :
+ 2 5
+Sample Output 2 :
+32
 
+public class Solution {
+
+	public static int power(int x, int n) {
+	 if(n==0)
+         return 1;
+  	 return x*power(x,n-1);
+    
+	}
+}
+import java.util.Scanner;
+
+public class Runner {
+
+	static Scanner s = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int x = s.nextInt();
+		int n = s.nextInt();
+		
+		System.out.println(Solution.power(x, n));
+	}
+}
+2.Number of Digits------------------------------------------
+Given the number 'n', find out and return the number of digits present in a number recursively.
+Input Format :
+Integer n
+Output Format :
+Count of digits
+Constraints :
+1 <= n <= 10^6
+Sample Input 1 :
+ 156
+Sample Output 1 :
+3
+Sample Input 2 :
+ 7
+Sample Output 2 :
+1
+
+public class Solution {
+
+	public static int count(int n){
+		
+        if(n==0)
+            return 0;
+        int s=count(n/10);
+        s++;
+        return s;
+       }
+}
+import java.util.Scanner;
+
+public class Runner {
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		System.out.println(Solution.count(n));
+	}
+	
+}
+3.Print First N Natural Numbers - Code-----------------
+
+Given the number 'n', write a code to print numbers from 1 to n in increasing order recursively.
+Input Format :
+Integer n
+Output Format :
+Numbers from 1 to n (separated by space)
+Constraints :
+1 <= n <= 10000
+Sample Input 1 :
+ 6
+Sample Output 1 :
+1 2 3 4 5 6
+Sample Input 2 :
+ 4
+Sample Output 2 :
+1 2 3 4
+
+
+public class Solution {
+    public static void print(int n){
+
+        //Write your code here
+
+        if(n==0)
+
+            return;
+        print(n-1);
+        System.out.print(n+" ");
+import java.util.Scanner;
+
+public class Runner {
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		Solution.print(n);
+	}
+	
+}
+4.Sum Of Array---------------------
+
+Given an array of length N, you need to find and return the sum of all elements of the array.
+Do this recursively.
+Input Format :
+Line 1 : An Integer N i.e. size of array
+Line 2 : N integers which are elements of the array, separated by spaces
+Output Format :
+Sum
+Constraints :
+1 <= N <= 10^3
+Sample Input 1 :
+3
+9 8 9
+Sample Output 1 :
+26
+Sample Input 2 :
+3
+4 2 1
+Sample Output 2 :
+7    
+
+public class Solution {
+    public static int sum(int input[]) {
+        if(input == null || input.length == 0)
+        {
+            return 0;
+        }else
+        {
+
+            return sum(input,input.length-1);
+        }
+  }
+
+    public static int sum(int arr[],int n)
+    {
+        if(n == 0)
+        {
+            return arr[n];
+
+        }
+        return arr[n] + sum(arr, n-1);
+    }
+    import java.util.Scanner;
+
+public class Runner {
+
+	static Scanner s = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int n = s.nextInt();
+		int input[] = new int[n];
+		for(int i = 0; i < n; i++) {
+			input[i] = s.nextInt();
+		}
+		System.out.println(Solution.sum(input));
+	}
+}
+5.Check Number in Array--------------------------------
+
+Given an array of length N and an integer x, you need to find if x is present in the array or not. Return true or false.
+Do this recursively.
+Input Format :
+Line 1 : An Integer N i.e. size of array
+Line 2 : N integers which are elements of the array, separated by spaces
+Line 3 : Integer x
+Output Format :
+'true' or 'false'
+Constraints :
+1 <= N <= 10^3
+Sample Input 1 :
+3
+9 8 10
+8
+Sample Output 1 :
+true
+Sample Input 2 :
+3
+9 8 10
+2
+Sample Output 2 :
+false
+
+public class Solution {
+
+    public static boolean checkNumber(int input[], int x) {
+
+    return checkNumber(input,x,0);        
+
+    }
+    public static boolean checkNumber(int[] input,int x,int index){
+     if(index==input.length)   
+     {
+         return false;
+     } 
+        if(input[index]==x)
+        {
+            return true;
+        }
+        return checkNumber(input,x,index+1);
+        
+        import java.util.Scanner;
+
+public class Runner {
+
+	static Scanner s = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		int n = s.nextInt();
+		int input[] = new int[n];
+		for(int i = 0; i < n; i++) {
+			input[i] = s.nextInt();
+		}
+		int x = s.nextInt();
+		System.out.println(Solution.checkNumber(input, x));
+	}
+}
+6.First Index Of a Number in an Array - Question------------------
+
+Given an array of length N and an integer x, you need to find and return the first index of integer x present in the array. Return -1 if it is not present in the array.
+First index means, the index of first occurrence of x in the input array.
+Do this recursively. Indexing in the array starts from 0.
+Input Format :
+Line 1 : An Integer N i.e. size of array
+Line 2 : N integers which are elements of the array, separated by spaces
+Line 3 : Integer x
+Output Format :
+first index or -1
+Constraints :
+1 <= N <= 10^3
+Sample Input :
+4
+9 8 10 8
+8
+Sample Output :
+1
+
+public class Solution {
+
+    public static int firstIndex(int input[], int x) 
+    {
+        if(input.length==0)
+            return -1;
+        if(input[0]==x)
+
+            return 0;
+        int sa[]=new int[input.length-1];
+        for(int i=1;i<sa.length;i++)
+        {
+           sa[i-1]=input[i];
+        }
+
+        int fi=firstIndex(sa,x);
+        if(fi==-1)
+            return fi;
+       return fi+1;
+
+    }
+    }
+7.Last Index Of a Number in an Array - Question---------------------------------
+
+Given an array of length N and an integer x, you need to find and return the last index of integer x present in the array. Return -1 if it is not present in the array.
+Last index means - if x is present multiple times in the array, return the index at which x comes last in the array.
+You should start traversing your array from 0, not from (N - 1).
+Do this recursively. Indexing in the array starts from 0.
+Input Format :
+Line 1 : An Integer N i.e. size of array
+Line 2 : N integers which are elements of the array, separated by spaces
+Line 3 : Integer x
+Output Format :
+last index or -1
+Constraints :
+1 <= N <= 10^3
+Sample Input :
+4
+9 8 10 8
+8
+Sample Output :
+3
+
+
+public class Solution{
+    public static int lastIndex(int input[], int x) {
+11
+        if(input.length==0)
+12
+            return -1;
+13
+    
+14
+        int sa[]=new int[input.length-1];
+15
+        for(int i=1; i<input.length;i++)
+
+        {
+
+            sa[i-1]=input[i];
+
+        }
+        int la=lastIndex(sa,x);
+
+        if (la!=-1)
+        {
+
+            return la+1;
+        }else
+            {
+                if(input[0]==x)
+                    return 0;
+                else
+                    return -1;
+}
+
+8.Remove X-------------------------------
+Given a string, compute recursively a new string where all 'x' chars have been removed.
+Input format :
+String S
+Output format :
+Modified String
+Constraints :
+1 <= |S| <= 10^3
+where |S| represents the length of string S. 
+Sample Input 1 :
+xaxb
+Sample Output 1:
+ab
+Sample Input 2 :
+abc
+Sample Output 2:
+abc
+Sample Input 3 :
+xx
+Sample Output 3:
+
+
+public class solution {
+
+5
+    public static String removeX(String input){
+6
+        
+7
+            if(input.length()==0)
+8
+                return input;
+9
+            String smallOutput = removeX(input.substring(1));
+10
+        if(input.charAt(0)=='x')
+11
+                return ""+smallOutput;
+12
+        
+13
+        else
+
+            return input.charAt(0)+smallOutput; 
+    }
+
+}
+9.Remove Duplicates Recursion------------------------
+Given a string S, remove consecutive duplicates from it recursively.
+Input Format :
+String S
+Output Format :
+Output string
+Constraints :
+1 <= |S| <= 10^3
+where |S| represents the length of string
+Sample Input 1 :
+aabccba
+Sample Output 1 :
+abcba
+Sample Input 2 :
+xxxyyyzwwzzz
+Sample Output 2 :
+xyzwz
+
+
+public class Solution {
+    public static String removeConsecutiveDuplicates(String s) {
+        if(s.length()<=1)
+6
+            return s;
+7
+        String so=removeConsecutiveDuplicates(s.substring(1));
+8
+        if(s.charAt(0)==so.charAt(0))
+9
+            return so;
+10
+       else
+11
+           return s.charAt(0)+so;
+
+    }
+}
+10.Merge Sort - Problem Statement---------------------------------
+
+Sort an array A using Merge Sort.
+Change in the input array itself. So no need to return or print anything.
+Input format :
+Line 1 : Integer n i.e. Array size
+Line 2 : Array elements (separated by space)
+Output format :
+Array elements in increasing order (separated by space)
+Constraints :
+1 <= n <= 10^3
+Sample Input 1 :
+6 
+2 6 8 5 4 3
+Sample Output 1 :
+2 3 4 5 6 8
+Sample Input 2 :
+5
+2 1 5 2 3
+Sample Output 2 :
+1 2 2 3 5 
+
+        
+		if(input.length<=1)
+            return ;
+        
+        
+        int b[]=new int[input.length/2];
+        int c[]=new int[input.length-b.length];
+        
+        for(int i=0;i<input.length/2;i++)
+        {
+            b[i]=input[i];
+        }
+        for(int i=input.length/2;i<input.length;i++)
+        {
+            c[i-input.length/2]=input[i];
+        }
+        mergeSort(b);
+        mergeSort(c);
+        merge(b,c,input);
+	}
+}
+1
+public class solution {
+2
+    
+3
+    public static void merge(int s1[],int s2[],int d[])
+4
+    {
+5
+      int i=0,j=0,k=0; 
+6
+    while(i<s1.length && j<s2.length)
+7
+    {
+8
+        if (s1[i]<=s2[j])
+9
+        {
+10
+            d[k]=s1[i];
+11
+            k++;
+12
+            i++;
+13
+        }
+14
+        else
+15
+        {
+16
+            d[k]=s2[j];
+17
+            k++;
+18
+            j++;
+19
+        }
+20
+    }
+21
+        if(i<s1.length){
+22
+            while(i<s1.length)
+23
+            {
+24
+                d[k]=s1[i];
+25
+                k++;
+26
+                i++;
+27
+            }
+28
+         }
+29
+        if(j<s2.length){
+30
+            while(j<s2.length)
+31
+            {
+32
+                d[k]=s2[j];
+33
+                k++;
+34
+                j++;
+35
+            }
+36
+        }
+37
+        
+38
+    }
+
+    public static void mergeSort(int[] input){
+        if(input.length<=1)
+            return ;
+        int b[]=new int[input.length/2];
+48
+        int c[]=new int[input.length-b.length];
+
+        for(int i=0;i<input.length/2;i++)
+        {
+            b[i]=input[i];
+        }
+        for(int i=input.length/2;i<input.length;i++)
+        {
+            c[i-input.length/2]=input[i];
+        }
+        mergeSort(b);
+        mergeSort(c);
+
+        merge(b,c,input);
+    }
+
+}
+11.Quick Sort - Problem Statement-------------------------------
+Sort an array A using Quick Sort.
+Change in the input array itself. So no need to return or print anything.
+
+
+Input format :
+Line 1 : Integer n i.e. Array size
+Line 2 : Array elements (separated by space)
+Output format :
+Array elements in increasing order (separated by space)
+Constraints :
+1 <= n <= 10^3
+Sample Input 1 :
+6 
+2 6 8 5 4 3
+Sample Output 1 :
+2 3 4 5 6 8
+Sample Input 2 :
+5
+1 5 2 7 3
+Sample Output 2 :
+1 2 3 5 7 
+
+
+public class Solution {
+    public static int partition(int a[],int si,int ei)
+4
+    {
+5
+        int pe=a[si];
+6
+        int smallCount=0;
+7
+        for(int i=si+1;i<=ei;i++)
+8
+        {
+9
+            if(a[i]<pe){
+10
+                smallCount++;
+11
+            }
+12
+        }
+13
+        int temp=a[si+smallCount];
+14
+        a[si+smallCount]=pe;
+15
+        a[si]=temp;
+        int i=si;
+18
+        int j=ei;
+19
+        while(i<j)
+20
+        {
+        if(a[i]<pe)
+23
+        {
+24
+            i++;
+25
+        }
+26
+        else if(a[j]>=pe)
+27
+        {
+28
+            j--;
+29
+        }else{
+30
+        temp=a[i];
+31
+        a[i]=a[j];
+32
+        a[j]=temp;
+33
+        i++;
+34
+        j--;
+35
+        }
+36
+        }
+        return si+smallCount;
+    }
+    public static void quickSort(int a[],int si, int ei)
+    {
+        if(si>=ei)
+            return;
+        int pi=partition(a,si,ei);
+        quickSort(a,si,pi-1);
+49
+        quickSort(a,pi+1,ei);
+    }
+    public static void quickSort(int[] a)
+    {
+
+        quickSort(a,0,a.length-1);
+    }
+}
+11.Tower Of Hanoi - Problem Statement--------------------------------------------
+Tower of Hanoi is a mathematical puzzle where we have three rods and n disks. The objective of the puzzle is to move all disks from source rod to destination rod using third rod (say auxiliary). The rules are :
+1) Only one disk can be moved at a time.
+2) A disk can be moved only if it is on the top of a rod.
+3) No disk can be placed on the top of a smaller disk.
+Print the steps required to move n disks from source rod to destination rod.
+Source Rod is named as 'a', auxiliary rod as 'b' and destination rod as 'c'.
+Input Format :
+Integer n
+Output Format :
+Steps in different lines (in one line print source and destination rod name separated by space)
+Constraints :
+0 <= n <= 20
+Sample Input 1 :
+2
+Sample Output 1 :
+a b
+a c
+b c
+Sample Input 2 :
+3
+Sample Output 2 :
+a c
+a b
+c b
+a c
+b a
+b c
+a c
+
+public class solution{
+    public static void towerOfHanoi(int disks, char source, char auxiliary, char destination) {
+
+        if(disks==0)
+            return;
+        if(disks==1){
+        System.out.println(source+" "+destination);
+12
+            return;
+13
+        }
+
+        towerOfHanoi(disks-1,source,destination,auxiliary);
+
+        System.out.println(source+" "+destination);
+
+        towerOfHanoi(disks-1,auxiliary,source,destination);
+    }
+}
+12.Geometric Sum-------------------------------------
+Given k, find the geometric sum i.e.
+1 + 1/2 + 1/4 + 1/8 + ... + 1/(2^k) 
+using recursion.
+Input format :
+Integer k
+Output format :
+Geometric sum (upto 5 decimal places)
+Constraints :
+0 <= k <= 1000
+Sample Input 1 :
+3
+Sample Output 1 :
+1.87500
+Sample Input 2 :
+4
+Sample Output 2 :
+1.93750
+Explanation for Sample Input 1:
+1+ 1/(2^1) + 1/(2^2) + 1/(2^3) = 1.87500
+
+public class solution {
+public static double findGeometricSum(int k){
+
+        if(k==0) 
+            return 1;
+        double a=1/(double)Math.pow(2,k)+ findGeometricSum(k-1);
+        return a;
+    }
+}
+13.Check Palindrome (recursive)--------------------------------
+Check whether a given String S is a palindrome using recursion. Return true or false.
+Input Format :
+String S
+Output Format :
+'true' or 'false'
+Constraints :
+0 <= |S| <= 1000
+where |S| represents length of string S.
+Sample Input 1 :
+racecar
+Sample Output 1:
+true
+Sample Input 2 :
+ninja
+Sample Output 2:
+false
+
+
+public class solution{
+    public static boolean PalRev(String s,int si,int ei){
+5
+        if(si==ei)
+6
+            return true;
+7
+        if(s.charAt(si)!=s.charAt(ei))
+8
+            return false;
+9
+        if(si<ei+1)
+10
+            return PalRev(s,si+1,ei-1);
+        return true;
+    }
+    public static boolean isStringPalindrome(String input) {
+        int n=input.length();
+        if(n==0)
+            return true;
+        return  PalRev(input,0,n-1);
+}
+}
+14.Sum of digits (recursive)--------------------------
+Write a recursive function that returns the sum of the digits of a given integer.
+Input format :
+Integer N
+Output format :
+Sum of digits of N
+Constraints :
+0 <= N <= 10^9
+Sample Input 1 :
+12345
+Sample Output 1 :
+15
+Sample Input 2 :
+9
+Sample Output 2 :
+9
+
+
+import java.util.*;
+public class solution {
+    public static int sumOfDigits(int input){
+
+        if(input==0)
+            return 0;
+        return  ((input%10)+sumOfDigits(input/10));
+
+    }
+}
+15.Multiplication (Recursive)---------------------
+Given two integers M & N, calculate and return their multiplication using recursion. You can only use subtraction and addition for your calculation. No other operators are allowed.
+Input format :
+Line 1 : Integer M
+Line 2 : Integer N
+Output format :
+M x N
+Constraints :
+0 <= M <= 1000
+0 <= N <= 1000
+Sample Input 1 :
+3 
+5
+Sample Output 1 :
+15
+Sample Input 2 :
+4 
+0
+Sample Output 2 :
+0
+
+
+public class solution {
+    public static int multiplyTwoIntegers(int m, int n){
+        if (m==0 || n==0)
+8
+            return 0;
+9
+        if(m<n)
+10
+            return multiplyTwoIntegers(n,m);
+11
+        else if(n!=0)
+12
+            return m + multiplyTwoIntegers(m,n-1);
+13
+        else
+      return 0;
+
+    }}
+15.Count Zeros--------------------------
+Given an integer N, count and return the number of zeros that are present in the given integer using recursion.
+Input Format :
+Integer N
+Output Format :
+Number of zeros in N
+Constraints :
+0 <= N <= 10^9
+Sample Input 1 :
+0
+Sample Output 1 :
+1
+Sample Input 2 :
+00010204
+Sample Output 2 :
+2
+Explanation for Sample Output 2 :
+Even though "00010204" has 5 zeros, the output would still be 2 because when you convert it to an integer, it becomes 10204.
+Sample Input 3 :
+708000
+Sample Output 3 :
+4
+
+
+public class solution {
+    public static int countZerosRec(int input){
+        if(input==0)
+            return 1;
+        if(input<10)
+            return 0;
+        if(input%10==0)
+            return 1+countZerosRec(input/10);
+        else
+            return countZerosRec(input/10);
+    }
+}
+16.String to Integer---------------------------------
+Write a recursive function to convert a given string into the number it represents. That is input will be a numeric string that contains only numbers, you need to convert the string into corresponding integer and return the answer.
+Input format :
+Numeric string S (string, Eg. "1234")
+Output format :
+Corresponding integer N (int, Eg. 1234)
+Constraints :
+0 < |S| <= 9
+where |S| represents length of string S.
+Sample Input 1 :
+00001231
+Sample Output 1 :
+1231
+Sample Input 2 :
+12567
+Sample Output 2 :
+12567
+
+
+public class solution {
+     public static int convertStringToInt(String input)
+    {
+       if(input.length()==1)
+            return input.charAt(0)-'0';
+        int ans=convertStringToInt(input.substring(1));
+        int x= input.charAt(0)-'0';
+        x= x*(int)Math.pow(10,input.length()-1)+ans;
+        return x;
+
+    }
+}
+17.Pair Star-----------------------
+Given a string S, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
+Input format :
+String S
+Output format :
+Modified string
+Constraints :
+0 <= |S| <= 1000
+where |S| represents length of string S.
+Sample Input 1 :
+hello
+Sample Output 1:
+hel*lo
+Sample Input 2 :
+aaaa
+Sample Output 2 :
+a*a*a*a
+
+public class solution {
+    public static String addStars(String s) {
+        if(s.length()==1)
+            return s;//base
+        String so=addStars(s.substring(1));//hypo
+        if(s.charAt(0)==so.charAt(0))
+           return  s.charAt(0)+"*"+so;
+        else
+            return s.charAt(0)+so;
+
+    }
+}
+18.Check AB-------------------------
+Suppose you have a string, S, made up of only 'a's and 'b's. Write a recursive function that checks if the string was generated using the following rules:
+a. The string begins with an 'a'
+b. Each 'a' is followed by nothing or an 'a' or "bb"
+c. Each "bb" is followed by nothing or an 'a'
+If all the rules are followed by the given string, return true otherwise return false.
+Input format :
+String S
+Output format :
+'true' or 'false'
+Constraints :
+1 <= |S| <= 1000
+where |S| represents length of string S.
+Sample Input 1 :
+abb
+Sample Output 1 :
+true
+Sample Input 2 :
+abababa
+Sample Output 2 :
+false
+Explanation for Sample Input 2
+In the above example, a is not followed by either "a" or "bb", instead it's followed by "b" which results in false to be returned.
+
+public class Solution {
+    public static boolean checkAB(String input) {
+        if(input.length()==0)
+            return true;//base
+        if(input.charAt(0)=='a')
+9
+            if(input.substring(1).length()>1 && input.substring(1,3).equals("bb"))
+10
+               {
+11
+                   return checkAB(input.substring(3));
+12
+               }
+            else
+                     return checkAB(input.substring(1));
+
+        else
+            return false;
+    }}
+19.Staircase-------------------------------------
+A child is running up a staircase with N steps, and can hop either 1 step, 2 steps or 3 steps at a time. Implement a method to count how many possible ways the child can run up to the stairs. You need to return number of possible ways W.
+Input format :
+Integer N
+Output Format :
+Integer W
+Constraints :
+1 <= N <= 30
+Sample Input 1 :
+4
+Sample Output 1 :
+7
+Sample Input 2 :
+5
+Sample Output 2 :
+13
+
+public class Solution {
+     public static int staircase(int n){
+         //base
+         if(n<0)
+             return 0;
+         if(n==0)
+             return 1;
+         int op1=staircase(n-1);
+         int op2=staircase(n-2);
+         int op3=staircase(n-3);
+         return op1+op2+op3;
+    }
+}
